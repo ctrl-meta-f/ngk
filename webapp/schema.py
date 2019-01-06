@@ -3,8 +3,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, Numeric
+import os
 
-engine = create_engine('postgresql:///ngk')
+engine = create_engine(os.getenv('DB_URI', 'postgresql:///ngk'))
 Base = declarative_base()
 Session = sessionmaker()
 Session.configure(bind=engine)

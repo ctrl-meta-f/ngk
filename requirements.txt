@@ -1,0 +1,6 @@
+flask
+sqlalchemy
+lxml
+requests
+gunicorn
+psycopg2

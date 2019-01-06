@@ -3,11 +3,12 @@ import time
 import requests
 import lxml.etree
 import re
+import os
 from schema import ScopedSession, SyncState
 
 
 logging.basicConfig(
-    filename="../logs/scan_comments.log",
+    filename=os.getenv("LOG_FILE", "../logs/scan_comments.log"),
     format="%(asctime)s %(levelname)s %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
     level=logging.DEBUG)

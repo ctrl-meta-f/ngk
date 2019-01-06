@@ -13,7 +13,7 @@ import gzip
 
 
 logging.basicConfig(
-    filename="../logs/fetch_posts.log",
+    filename=os.getenv("LOG_FILE", "../logs/fetch_posts.log"),
     format="%(asctime)s %(levelname)s %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
     level=logging.DEBUG)
