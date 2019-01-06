@@ -9,7 +9,7 @@ from datetime import datetime, timezone, timedelta
 from schema import ScopedSession, SyncState, User, Post, Comment
 import os
 import os.path
-
+import gzip
 
 
 logging.basicConfig(
@@ -134,10 +134,10 @@ def update_state(state, result):
 def dump_post(content):
     time = datetime.utcnow()
     subdir_path = os.path.join(DUMP_DIR, time.strftime("%Y-%m-%d"))
-    file_name = time.strftime("%H-%M-%S") + ".html"
+    file_name = time.strftime("%H-%M-%S") + ".html.z"
     if not os.path.isdir(subdir_path):
         os.makedirs(subdir_path)
-    with open(os.path.join(subdir_path, file_name), 'wb') as f:
+    with gzip.open(os.path.join(subdir_path, file_name), 'wb') as f:
         f.write(content)
 
 def update_post(session, state):
